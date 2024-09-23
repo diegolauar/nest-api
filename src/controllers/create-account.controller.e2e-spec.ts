@@ -13,8 +13,11 @@ describe('Create Account (E2E)', () => {
         const moduleRef = await Test.createTestingModule({
             imports: [AppModule],
         }).compile()
+
         app = moduleRef.createNestApplication()
+        
         prisma = moduleRef.get(PrismaService)
+
         await app.init()
     })
 

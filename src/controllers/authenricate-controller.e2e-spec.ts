@@ -15,8 +15,11 @@ describe('Authenticate (E2E)', () => {
         const moduleRef = await Test.createTestingModule({
             imports: [AppModule],
         }).compile()
+
         app = moduleRef.createNestApplication()
+
         prisma = moduleRef.get(PrismaService)
+        
         await app.init()
     })
 
@@ -34,7 +37,7 @@ describe('Authenticate (E2E)', () => {
             email: 'johndoe@example.com',
             password: '123456',
         })
-        
+
         expect(response.statusCode).toBe(201)
         expect(response.body).toEqual({
             access_token: expect.any(String),
